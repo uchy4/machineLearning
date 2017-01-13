@@ -36,7 +36,7 @@ class Classifier(object):
         #print self.prediction
         print 'Accurracy: ' + str(self.percent)+'%'
         
-        print (self.iris.data)
+        #print (self.iris.data)
         '''
         # Show the data (the attributes of each instance)
         print (iris.data)
