@@ -1,0 +1,12 @@
+1  g  h  g  y
+2  g  h  p  y
+3  g  l  g  y
+4  g  l  p  n
+5  a  h  g  y
+6  a  l  p  n
+7  a  h  p  y
+8  a  l  g  n
+9  l  h  g  y
+10 l  h  p  n
+11 l  l  g  n
+12 l  l  p  n
