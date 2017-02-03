@@ -203,10 +203,20 @@ def prompt():
 
 ################################
 
+def multiply(data, yes):
+    if yes:
+        newData = []
+        for x in range(5):
+            for d in data:
+                newData.append(d)
+        return newData
+    return data
 
 
 p = prompt()
-d = DecisionTree(csv.CSV(p[0],p[1]).data,p[2])
+data = csv.CSV(p[0],p[1]).data
+data = multiply(data,p[1])
+d = DecisionTree(data,p[2])
 d.swap()
 d.fit()
 d.predict()
