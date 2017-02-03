@@ -1,0 +1,64 @@
+When your assignment is complete, please answer the questions in this text file and upload it to I-Learn.
+
+
+1. Please provide a link to your classifier in your public GitHub repo.
+https://github.com/joshuchy/cs450/blob/master/id3/id3.py
+
+2. Briefly describe your overall approach to the task and highlight the most difficult part of this assignment.
+I first started with the entropy and that took me all last week to figure out, but i got it done; this week i focused on the construction of the decision tree. It was a lot more complex than I thought.
+
+3. Briefly describe how you handled numeric data.
+I used WEKA app to discretize it beforehand
+
+4. Briefly describe your you handled missing data.
+I ommitted the rows that were not as long or longer than the average row
+
+5. Describe your results for the Iris data set. (e.g., What was the size of the tree? How did your implementation compare to existing implementations? How did your decision tree compare to your kNN classifier)
+I dont think as big. It was a lot faster and I think just as accurate.
+
+6. Include a textual representation of the tree your algorithm produced for the iris dataset.
+	accuracy: 92.0
+
+	Lowest entropy path:
+	root->if(col==3 & type=='\'(-inf-0.8]\'')->ANSWER:Iris-setosa
+
+	Highest entropy path:
+	root->if(col==3 & type=='\'(1.75-inf)\'')->ANSWER:Iris-virginica
+
+7. Describe your results for the Lenses data set. (e.g., What was the size of the tree? How did your implementation compare to existing implementations?)
+	87.5% or higher
+
+8. Include a textual representation of the tree your algorithm produced for the Lenses dataset.
+	accuracy: 100.0
+
+	Lowest entropy path:
+	root->if(col==3 & type==1)->ANSWER:3
+
+	Highest entropy path:
+	root->if(col==3 & type==2)->if(col==2 & type==2)->if(col==0 & type==2)->ANSWER:3
+
+9. Describe your results for the Voting data set. (e.g., What was the size of the tree? How did your implementation compare to existing implementations?)
+	93%+ it branches out to around 5 levels for the lowest entropy
+
+10. Include ___a portion of___ the representation of the tree your algorithm produced for the Voting dataset.
+	accuracy: 95.17
+
+	Lowest entropy path:
+	root->if(col==4 & type==y)->if(col==11 & type==y)->if(col==3 & type==y)->if(col==7 & type==y)->ANSWER:republican
+
+	Highest entropy path:
+	root->if(col==4 & type==n)->if(col==3 & type==n)->if(col==6 & type==n)->ANSWER:republican
+
+
+11. If applicable, please describe anything you did to go above and beyond and the results you saw.
+I parsed text files of data, and discretized the iris dataset
+
+12. Please select the category you feel best describes your assignment:
+A - Some attempt was made
+B - Developing, but signficantly deficient
+C - Slightly deficient, but still mostly adequate
+D - Meets requirements
+XXX E - Shows creativity and excels above and beyond requirements
+
+13. Provide a brief justification (1-2 sentences) for selecting that category.
+I worked more than the necessary time for this, and I shared my insights with others, promoting the BYU-I education system. I completed the assignment; it didnt work as well as i liked, but then something happened where it works reall well; it works really well the more data that you have; like the voting.
