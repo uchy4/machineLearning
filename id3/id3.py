@@ -25,8 +25,11 @@ class DecisionTree(object):
         self.nodes = node.Node()
         self.predictions = []
         self.test_data = []
+        self.path = []
 
     def swap(self, count=3):
+        random.shuffle(self.data)
+        print count
         test_data = []
         fit_data = []
         for x in range(len(self.data)):
@@ -35,6 +38,8 @@ class DecisionTree(object):
             else:
                 fit_data.append(self.data[x])
 
+        if len(test_data)==0:
+            self.swap()
         self.data = fit_data
         self.test_data = test_data
 
@@ -43,9 +48,9 @@ class DecisionTree(object):
         n = self.nodes
         for d in self.test_data:
             try:
-                self.recurAnswer(d,n)
+                self.predictions.append(self.recurAnswer(d,n))
             except StandardError:
-                pass
+                print 'something is missing'
 
     def recurAnswer(self,d,n):
 ##        try:
@@ -54,13 +59,13 @@ class DecisionTree(object):
 ##            print n
 ##            return n.parent.answer
         if n.isLeaf:
-            self.predictions.append(n.answer)
-            return n
+            return n.answer
         else:
             for a in n.children:
                 if d[a.column]== a.type:
                     #print a.column
-                    self.recurAnswer(d,a)
+                    return self.recurAnswer(d,a)
+            return n.answer
 
     #entropy of whole set minus entropy of particular feature
     #wE - pE = answerE
@@ -148,6 +153,8 @@ class DecisionTree(object):
     def compare(self):
         #iterate trough the arrays and compare test results
         percent = 0.0
+        print 'test: ' + str(len(self.test_data))
+        print 'pred: ' + str(len(self.predictions))
         for x,y in zip(self.test_data, self.predictions):
             if x[self.indexes[0]] == y:
                 percent+=1
@@ -155,8 +162,17 @@ class DecisionTree(object):
         self.percent = round(percent,2)
             
 
-    def display(self):
-        print 'Tree: '
+    def display(self,n,l=0,h='Lowest',path = 'root'):
+        if l:
+           l = len(n.children)-1
+           h = 'Highest'
+        if not n.isLeaf:
+            path += '->if(col==' + str(n.column) + ' & type==' + str(n.type) + ')'
+            self.display(n.children[l],l,h,path)
+        else:
+            path += '->ANSWER:' + str(n.answer)
+            print '\n' + h + ' entropy path:'
+            print path
 
 ###############################
 
@@ -196,6 +212,8 @@ d.fit()
 d.predict()
 d.compare()
 show(d)
+d.display(d.nodes.children[0])
+d.display(d.nodes.children[len(d.nodes.children)-1],2)
 
 
 
